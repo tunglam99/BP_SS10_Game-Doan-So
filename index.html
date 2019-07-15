@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+function TimKiemTuyenTinh(number) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == number) {
+            return i;
+        }
+    }
+    return -1;
+};
+function TimKiemNhiPhan(arr, data) {
+    let lowerBound = 0;
+    let upperBound = arr.length;
+    let midPoint = -1;
+    let index = -1;
+    while (lowerBound <= upperBound) {
+        midPoint = Math.round((lowerBound + upperBound) / 2);
+        if (arr[midPoint] === data) {
+            index = midPoint;
+            break;
+        } else {
+            if (arr[midPoint] < data) {
+                lowerBound = midPoint + 1;
+            } else {
+                upperBound = midPoint - 1;
+            }
+        }
+    }
+    return index;
+};
+
+let arr = [1,2,5,8,-7,5,7,7,8,8,9,9,-9,6,87];
+arr.sort(function (a, b) {
+    return a-b ;
+})
+document.write(arr);
+document.write("<br>");
+
+let firstMilliseconds1 = new Date().getMilliseconds();
+let resultTuyenTinh = TimKiemTuyenTinh(9);
+document.write(resultTuyenTinh + " ");
+let lastMilliseconds1 = new Date().getMilliseconds();
+document.write(lastMilliseconds1 - firstMilliseconds1);
+document.write("<br>");
+
+
+let firstMilliseconds2 = new Date().getMilliseconds();
+let resultNhiPhan = TimKiemNhiPhan(arr,9);
+document.write(resultNhiPhan + " ");
+let lastMilliseconds2 = new Date().getMilliseconds();
+document.write(lastMilliseconds2 - firstMilliseconds2);
+
+
+</script>
+</body>
+</html>
